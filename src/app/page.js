@@ -11,7 +11,7 @@ export default function Home() {
   // Project data
   const projectData = {
     project1: {
-      title: 'Shopping App Redesign',
+      title: 'Stage Website',
       description:
         'A comprehensive redesign of an e-commerce mobile application focusing on user experience improvements and modern design principles.',
       details: [
@@ -19,13 +19,13 @@ export default function Home() {
         'Redesigned the entire user flow for better conversion',
         'Implemented a new design system with consistent components',
         'Improved checkout process reducing cart abandonment by 35%',
-        'Created interactive prototypes for user testing',
+        'Created interactive prototypes for user testing'
       ],
-      technologies: ['Figma', 'Principle', 'Adobe XD', 'Photoshop'],
-      image: 'E-Commerce App',
+      technologies: ['Figma'],
+      image: 'Stage Web'
     },
     project2: {
-      title: 'Digital Banking Platform',
+      title: 'Coding Platform ProJect',
       description:
         'A secure and intuitive banking application interface designed with accessibility and user security in mind.',
       details: [
@@ -33,13 +33,13 @@ export default function Home() {
         'Implemented biometric authentication flows',
         'Created accessible interfaces following WCAG guidelines',
         'Developed comprehensive design system',
-        'Conducted extensive usability testing',
+        'Conducted extensive usability testing'
       ],
-      technologies: ['Figma', 'Sketch', 'InVision', 'Zeplin'],
-      image: 'Banking App',
+      technologies: ['Figma', 'VsCode', 'HTML', 'TailwindCSS'],
+      image: 'Codding Web'
     },
     project3: {
-      title: 'Food Delivery App',
+      title: 'POS System Website',
       description:
         'An intuitive food ordering and delivery service design that simplifies the ordering process while maintaining visual appeal.',
       details: [
@@ -47,11 +47,11 @@ export default function Home() {
         'Implemented real-time tracking functionality',
         'Designed for both iOS and Android platforms',
         'Created engaging micro-interactions',
-        'Optimized for accessibility and performance',
+        'Optimized for accessibility and performance'
       ],
-      technologies: ['Figma', 'After Effects', 'Lottie', 'Principle'],
-      image: 'Food Delivery',
-    },
+      technologies: ['Figjam', 'Figma', 'GoogleSheet', 'Word'],
+      image: 'POS System'
+    }
   };
 
   const toggleAbout = () => {
@@ -81,11 +81,18 @@ export default function Home() {
     setMobileMenuOpen(false); // Close mobile menu after navigation
   };
 
+  // Close mobile menu when clicking outside
+  const handleMobileMenuBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      setMobileMenuOpen(false);
+    }
+  };
+
   useEffect(() => {
     // Add intersection observer for animations
     const observerOptions = {
       threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px',
+      rootMargin: '0px 0px -50px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -100,12 +107,26 @@ export default function Home() {
       observer.observe(section);
     });
 
-    return () => observer.disconnect();
-  }, []);
+    // Close mobile menu when pressing Escape key
+    const handleEscapeKey = (e) => {
+      if (e.key === 'Escape' && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscapeKey);
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [mobileMenuOpen]);
 
   return (
     <>
       <style jsx global>{`
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+
         @keyframes float {
           0%,
           100% {
@@ -115,6 +136,7 @@ export default function Home() {
             transform: translateY(-20px);
           }
         }
+
         @keyframes fadeInUp {
           from {
             opacity: 0;
@@ -125,6 +147,7 @@ export default function Home() {
             transform: translateY(0);
           }
         }
+
         @keyframes slideIn {
           from {
             transform: translateX(-100%);
@@ -139,23 +162,29 @@ export default function Home() {
         .float-animation {
           animation: float 3s ease-in-out infinite;
         }
+
         .fade-in-up {
           animation: fadeInUp 0.6s ease-out;
         }
+
         .slide-in {
           animation: slideIn 0.3s ease-out;
         }
+
         .gradient-bg {
           background: linear-gradient(135deg, #e0f2ff 0%, #fce7f3 100%);
         }
+
         .glass-effect {
           backdrop-filter: blur(10px);
           background: rgba(255, 255, 255, 0.25);
           border: 1px solid rgba(255, 255, 255, 0.18);
         }
+
         .skill-glow {
           box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
         }
+
         .project-card {
           transition: all 0.3s ease;
           transform: translateY(0);
@@ -206,10 +235,28 @@ export default function Home() {
           z-index: 60;
           transform: translateX(-100%);
           transition: transform 0.3s ease;
+          display: flex;
+          flex-direction: column;
         }
 
         .mobile-menu.open {
           transform: translateX(0);
+        }
+
+        .mobile-menu-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1rem 1.5rem;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .mobile-menu-content {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
         }
       `}</style>
 
@@ -282,32 +329,50 @@ export default function Home() {
         </nav>
 
         {/* Mobile Menu */}
-        <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
-          <div className="flex flex-col items-center justify-center h-full space-y-8">
+        <div
+          className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}
+          onClick={handleMobileMenuBackdropClick}
+        >
+          <div className="mobile-menu-header">
+            <div className="text-xl font-bold text-blue-600">Portfolio</div>
             <button
-              onClick={() => scrollToSection('home')}
-              className="text-2xl text-gray-700 hover:text-blue-600 transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2 rounded-lg text-gray-700 hover:text-blue-600 transition-colors"
             >
-              Home
+              <div className="w-6 h-6 flex flex-col justify-center items-center">
+                <span className="bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm rotate-45 translate-y-1"></span>
+                <span className="bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm -rotate-45 -translate-y-1"></span>
+              </div>
             </button>
-            <button
-              onClick={() => scrollToSection('education')}
-              className="text-2xl text-gray-700 hover:text-blue-600 transition-colors"
-            >
-              Education
-            </button>
-            <button
-              onClick={() => scrollToSection('skills')}
-              className="text-2xl text-gray-700 hover:text-blue-600 transition-colors"
-            >
-              Skills
-            </button>
-            <button
-              onClick={() => scrollToSection('projects')}
-              className="text-2xl text-gray-700 hover:text-blue-600 transition-colors"
-            >
-              Projects
-            </button>
+          </div>
+
+          <div className="mobile-menu-content">
+            <div className="space-y-8">
+              <button
+                onClick={() => scrollToSection('home')}
+                className="block text-2xl text-gray-700 hover:text-blue-600 transition-colors"
+              >
+                Home
+              </button>
+              <button
+                onClick={() => scrollToSection('education')}
+                className="block text-2xl text-gray-700 hover:text-blue-600 transition-colors"
+              >
+                Education
+              </button>
+              <button
+                onClick={() => scrollToSection('skills')}
+                className="block text-2xl text-gray-700 hover:text-blue-600 transition-colors"
+              >
+                Skills
+              </button>
+              <button
+                onClick={() => scrollToSection('projects')}
+                className="block text-2xl text-gray-700 hover:text-blue-600 transition-colors"
+              >
+                Projects
+              </button>
+            </div>
           </div>
         </div>
 
@@ -358,14 +423,14 @@ export default function Home() {
                     About Me
                   </h3>
                   <p className="text-gray-600 mb-4 text-sm sm:text-base">
-                    Hello, my name is Naphat Nonglek (Phat). I am currently a
-                    third-year Software Engineering student at the University of
-                    Phayao. I have a strong interest in UX/UI design and I am
-                    looking for an internship in this field from November to
-                    March. I am eager to gain real-world experience, improve my
-                    skills, and expand my knowledge in design and user
-                    understanding to become a well-rounded designer and
-                    developer in the future.
+                    Hello, my name is Naphat Nonglek (Phat). I am 20 years old
+                    and currently a third-year Software Engineering student at
+                    the University of Phayao. I have a strong interest in UX/UI
+                    design and I am actively seeking an internship in this field
+                    from November to March. I am eager to gain real-world
+                    experience, develop my skills, and deepen my understanding
+                    of design and user needs. My goal is to become a
+                    well-rounded designer and developer in the future.
                   </p>
                   <p className="text-gray-600 mb-4 text-sm sm:text-base">
                     In the future, I aim to strengthen my coding skills to
@@ -406,11 +471,10 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="text-gray-600 mb-2 text-sm sm:text-base">
-                    2020 - 2024
+                    2023 - Present
                   </p>
                   <p className="text-gray-700 text-sm sm:text-base">
-                    Major in User Experience Design with focus on digital
-                    interfaces and user research methodologies.
+                    GPA : 3.17
                   </p>
                 </div>
 
@@ -434,8 +498,7 @@ export default function Home() {
                     2023
                   </p>
                   <p className="text-gray-700 text-sm sm:text-base">
-                    Comprehensive program covering user research, wireframing,
-                    prototyping, and usability testing.
+                    GPA : 3.59
                   </p>
                 </div>
               </div>
@@ -454,62 +517,128 @@ export default function Home() {
             </h2>
 
             <div className="max-w-6xl mx-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                {[
-                  {
-                    name: 'Figma',
-                    desc: 'Advanced prototyping and design systems',
-                    icon: 'Fi',
-                  },
-                  {
-                    name: 'Photoshop',
-                    desc: 'Image editing and visual design',
-                    icon: 'Ps',
-                  },
-                  {
-                    name: 'Illustrator',
-                    desc: 'Vector graphics and iconography',
-                    icon: 'Ai',
-                  },
-                  {
-                    name: 'User Research',
-                    desc: 'Interviews, surveys, and usability testing',
-                    icon: 'UX',
-                  },
-                  {
-                    name: 'Prototyping',
-                    desc: 'Interactive wireframes and mockups',
-                    icon: 'Pr',
-                  },
-                  {
-                    name: 'Design Systems',
-                    desc: 'Component libraries and style guides',
-                    icon: 'DS',
-                  },
-                ].map((skill, index) => (
-                  <div
-                    key={index}
-                    className="glass-effect rounded-2xl p-6 text-center transition-all duration-300 skill-glow"
-                  >
-                    <div
-                      className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r ${
-                        index % 2 === 0
-                          ? 'from-blue-500 to-pink-500'
-                          : 'from-pink-500 to-blue-500'
-                      } rounded-full flex items-center justify-center mx-auto mb-4`}
-                    >
-                      <span className="text-white font-bold text-lg sm:text-xl">
-                        {skill.icon}
-                      </span>
-                    </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">
-                      {skill.name}
-                    </h3>
-                    <p className="text-gray-600 text-sm sm:text-base">
-                      {skill.desc}
-                    </p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+                {/* UX/UI Design Tools */}
+                <div className="glass-effect rounded-2xl p-4 sm:p-6 text-center transition-all duration-300 skill-glow">
+                  <div className="text-2xl sm:text-3xl text-blue-600 mb-3">
+                    <i className="fab fa-figma"></i>
                   </div>
-                ))}
+                  <h3 className="text-sm sm:text-base font-bold text-gray-800 mb-1">
+                    Figma
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-600">
+                    UX/UI Design
+                  </p>
+                </div>
+
+                <div className="glass-effect rounded-2xl p-4 sm:p-6 text-center transition-all duration-300 skill-glow">
+                  <div className="text-2xl sm:text-3xl text-blue-600 mb-3">
+                    <i className="fas fa-palette"></i>
+                  </div>
+                  <h3 className="text-sm sm:text-base font-bold text-gray-800 mb-1">
+                    Canva
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-600">
+                    Design Tool
+                  </p>
+                </div>
+
+                {/* Development Tools */}
+                <div className="glass-effect rounded-2xl p-4 sm:p-6 text-center transition-all duration-300 skill-glow">
+                  <div className="text-2xl sm:text-3xl text-gray-800 mb-3">
+                    <i className="fab fa-github"></i>
+                  </div>
+                  <h3 className="text-sm sm:text-base font-bold text-gray-800 mb-1">
+                    GitHub
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-600">
+                    Version Control
+                  </p>
+                </div>
+
+                <div className="glass-effect rounded-2xl p-4 sm:p-6 text-center transition-all duration-300 skill-glow">
+                  <div className="text-2xl sm:text-3xl text-blue-600 mb-3">
+                    <i className="fab fa-microsoft"></i>
+                  </div>
+                  <h3 className="text-sm sm:text-base font-bold text-gray-800 mb-1">
+                    Office
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-600">
+                    Word, PowerPoint
+                  </p>
+                </div>
+
+                <div className="glass-effect rounded-2xl p-4 sm:p-6 text-center transition-all duration-300 skill-glow">
+                  <div className="text-2xl sm:text-3xl text-blue-500 mb-3">
+                    <i className="fas fa-code"></i>
+                  </div>
+                  <h3 className="text-sm sm:text-base font-bold text-gray-800 mb-1">
+                    VS Code
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-600">
+                    Code Editor
+                  </p>
+                </div>
+
+                {/* Web Technologies */}
+                <div className="glass-effect rounded-2xl p-4 sm:p-6 text-center transition-all duration-300 skill-glow">
+                  <div className="text-2xl sm:text-3xl text-orange-600 mb-3">
+                    <i className="fab fa-html5"></i>
+                  </div>
+                  <h3 className="text-sm sm:text-base font-bold text-gray-800 mb-1">
+                    HTML
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-600">
+                    Markup Language
+                  </p>
+                </div>
+
+                <div className="glass-effect rounded-2xl p-4 sm:p-6 text-center transition-all duration-300 skill-glow">
+                  <div className="text-2xl sm:text-3xl text-blue-600 mb-3">
+                    <i className="fab fa-css3-alt"></i>
+                  </div>
+                  <h3 className="text-sm sm:text-base font-bold text-gray-800 mb-1">
+                    CSS
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-600">Styling</p>
+                </div>
+
+                <div className="glass-effect rounded-2xl p-4 sm:p-6 text-center transition-all duration-300 skill-glow">
+                  <div className="text-2xl sm:text-3xl text-cyan-500 mb-3">
+                    <i className="fas fa-wind"></i>
+                  </div>
+                  <h3 className="text-sm sm:text-base font-bold text-gray-800 mb-1">
+                    Tailwind
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-600">
+                    CSS Framework
+                  </p>
+                </div>
+
+                {/* JavaScript Frameworks */}
+                <div className="glass-effect rounded-2xl p-4 sm:p-6 text-center transition-all duration-300 skill-glow">
+                  <div className="text-2xl sm:text-3xl text-black mb-3">
+                    <i className="fas fa-forward"></i>
+                  </div>
+                  <h3 className="text-sm sm:text-base font-bold text-gray-800 mb-1">
+                    Next.js
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-600">
+                    React Framework
+                  </p>
+                </div>
+
+                <div className="glass-effect rounded-2xl p-4 sm:p-6 text-center transition-all duration-300 skill-glow">
+                  <div className="text-2xl sm:text-3xl text-green-600 mb-3">
+                    <i className="fab fa-vuejs"></i>
+                  </div>
+                  <h3 className="text-sm sm:text-base font-bold text-gray-800 mb-1">
+                    Vue.js
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-600">
+                    JS Framework
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -530,22 +659,22 @@ export default function Home() {
                 {[
                   {
                     id: 'project1',
-                    title: 'Shopping App Redesign',
-                    desc: 'Modern e-commerce mobile app with improved user experience',
-                    img: 'E-Commerce App',
+                    title: 'Stage',
+                    desc: 'This project focuses on designing the UX/UI for an optimal user experience and modern interface.',
+                    img: 'Stage Web'
                   },
                   {
                     id: 'project2',
-                    title: 'Digital Banking Platform',
-                    desc: 'Secure and user-friendly banking application interface',
-                    img: 'Banking App',
+                    title: 'Coding Platform ProJect',
+                    desc: 'Contributed to frontend development and collaborated on refining UX/UI for better user engagement and responsive design.',
+                    img: 'Coding Web'
                   },
                   {
                     id: 'project3',
-                    title: 'Food Delivery App',
-                    desc: 'Intuitive food ordering and delivery service design',
-                    img: 'Food Delivery',
-                  },
+                    title: 'POS System Website',
+                    desc: 'Coordinated team workflow and timelines to deliver POSystem, a restaurant management website, on schedule.',
+                    img: 'POS System'
+                  }
                 ].map((project, index) => (
                   <div
                     key={project.id}
