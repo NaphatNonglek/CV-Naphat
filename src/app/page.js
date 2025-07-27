@@ -25,13 +25,14 @@ export default function Home() {
       technologies: ['Figma'],
       // แทนที่ URL เหล่านี้ด้วยรูปจริงของคุณ
       mainImage:
-        'https://via.placeholder.com/400x300/3b82f6/ffffff?text=Stage+Website',
+        'https://github.com/NaphatNonglek/IMG/blob/main/Stage%20Web/Main%20page.png?raw=true',
       images: [
-        'https://via.placeholder.com/800x600/3b82f6/ffffff?text=Stage+Image+1',
-        'https://via.placeholder.com/800x600/3b82f6/ffffff?text=Stage+Image+2',
-        'https://via.placeholder.com/800x600/3b82f6/ffffff?text=Stage+Image+3',
-        'https://via.placeholder.com/800x600/3b82f6/ffffff?text=Stage+Image+4',
-        'https://via.placeholder.com/800x600/3b82f6/ffffff?text=Stage+Image+5'
+        'https://github.com/NaphatNonglek/IMG/blob/main/Stage%20Web/Main%20page.png?raw=true',
+        'https://github.com/NaphatNonglek/IMG/blob/main/Stage%20Web/Main%20page/Dark%20mode.png?raw=true',
+        'https://github.com/NaphatNonglek/IMG/blob/main/Stage%20Web/Profile%20page.png?raw=true',
+        'https://github.com/NaphatNonglek/IMG/blob/main/Stage%20Web/Profile%20page/Dark%20mode.png?raw=true',
+        'https://github.com/NaphatNonglek/IMG/blob/main/Stage%20Web/Notifications%20page.png?raw=true',
+        'https://github.com/NaphatNonglek/IMG/blob/main/Stage%20Web/Notifications%20page/Dark%20mode.png?raw=true'
       ]
     },
     project2: {
@@ -44,17 +45,27 @@ export default function Home() {
         'Ranking system based on problem-solving scores.',
         'User profiles displaying problem-solving history.',
         'Ability to create, edit, delete, and view problems.',
-        'The answer evaluation system supports multiple programming languages, including Python 3, Python 2, C, C++, C#, Golang, PHP, Rust, Lua, Java, JavaScript, and TypeScript.'
+        'Capability to create test cases for problems, including both random correct answers and code-based solutions.',
+        'Management of various topics.',
+        'Admin management functions (add, delete, edit admins).',
+        'Ability to send notifications to users (individual users, user groups, or all users).',
+        'Ability to bookmark problems of interest.',
+        'The answer evaluation system supports multiple programming languages, including Python 3, Python 2, C, C++, C#, Golang, PHP, Rust, Lua, Java, JavaScript, and TypeScript.',
+        'It also integrates LLM systems (Gemini-1.5-flash, SCBX Typhoon 2, OpenThaiGPT 1.5) to assist in answer evaluation by generating prompts for condition verification.',
+        'Problem search functionality supports both lexical and semantic search methods.',
+        'Dark mode feature for comfortable viewing in low-light environments.'
       ],
       technologies: ['Figma', 'VsCode', 'HTML', 'TailwindCSS'],
       mainImage:
-        'https://via.placeholder.com/400x300/ec4899/ffffff?text=Coding+Platform',
+        'https://github.com/NaphatNonglek/IMG/blob/main/homepage%2011.png?raw=true',
       images: [
-        'https://via.placeholder.com/800x600/ec4899/ffffff?text=Coding+Image+1',
-        'https://via.placeholder.com/800x600/ec4899/ffffff?text=Coding+Image+2',
-        'https://via.placeholder.com/800x600/ec4899/ffffff?text=Coding+Image+3',
-        'https://via.placeholder.com/800x600/ec4899/ffffff?text=Coding+Image+4',
-        'https://via.placeholder.com/800x600/ec4899/ffffff?text=Coding+Image+5'
+        'https://github.com/NaphatNonglek/IMG/blob/main/homepage%2011.png?raw=true',
+        'https://github.com/NaphatNonglek/IMG/blob/main/UX_UI%20coding%20web%20project/make%20ploblem.png?raw=true',
+        'https://github.com/NaphatNonglek/IMG/blob/main/UX_UI%20coding%20web%20project/Profile%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9D%E0%B8%B6%E0%B8%81%E0%B8%97%E0%B8%B3%E0%B9%82%E0%B8%88%E0%B8%97%E0%B8%A2%E0%B9%8C%E0%B9%83%E0%B8%99%E0%B9%80%E0%B8%A7%E0%B9%87%E0%B8%9A.png?raw=true',
+        'https://github.com/NaphatNonglek/IMG/blob/main/UX_UI%20coding%20web%20project/Profile%20%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9D%E0%B8%B6%E0%B8%81%E0%B8%97%E0%B8%B3%E0%B9%82%E0%B8%88%E0%B8%97%E0%B8%A2%E0%B9%8C%E0%B9%83%E0%B8%99%E0%B9%80%E0%B8%A7%E0%B9%87%E0%B8%9A%20dark.png?raw=true',
+        'https://github.com/NaphatNonglek/IMG/blob/main/UX_UI%20coding%20web%20project/Problem.png?raw=true',
+        'https://github.com/NaphatNonglek/IMG/blob/main/UX_UI%20coding%20web%20project/Create_Proble.png?raw=true',
+        'https://github.com/NaphatNonglek/IMG/blob/main/4ef2b4ed-5a08-44ba-a613-e72925904fbd.jpg?raw=true'
       ]
     },
     project3: {
@@ -64,20 +75,22 @@ export default function Home() {
       details: [
         'User authentication features including login, registration, and password recovery.',
         'User profile creation with support for name, profile picture, and phone number.',
-        'The Restaurant page includes features to add categories and menus.',
-        'The Menu page allows users to edit or delete existing menu items.',
-        'The New Order page is used for placing orders.',
-        'The Overview page displays aggregated data after checkout.'
+        'The Restaurant page includes features to add categories and menus. Users can first create a category and then add menu items under the corresponding category.',
+        'On the Add Menu page, after creating categories, users can select a category from a dropdown for easier menu organization. Menu items can be named, assigned both cost price and selling price, and have an image uploaded.',
+        'The Menu page allows users to edit or delete existing menu items. Menu items that have been added will automatically appear on this page, displaying key information such as menu name, category, cost price, selling price, and menu image.',
+        'The New Order page is used for placing orders. When a customer places an order, users can select menu items, specify the quantity, and add an optional description. Once added, all selected items will appear in the Checkout section, which displays the item name, quantity, and total price. Users can remove items from the list and proceed to checkout.',
+        'The Overview page displays aggregated data after checkout. It presents key metrics such as Net Sales, Net Expenses, and Gross Profit in a pie chart format. Additionally, it shows the total number of orders.',
+        'On the Overview page, there is an Orders section displaying all sold items, and a Best Selling section showing top-selling products ranked from highest to lowest sales.'
       ],
       technologies: ['Figjam', 'Figma', 'GoogleSheet', 'Word'],
       mainImage:
-        'https://via.placeholder.com/400x300/10b981/ffffff?text=POS+System',
+        'https://github.com/NaphatNonglek/IMG/blob/main/BUDGETBUDDY/Home.png?raw=true',
       images: [
-        'https://via.placeholder.com/800x600/10b981/ffffff?text=POS+Image+1',
-        'https://via.placeholder.com/800x600/10b981/ffffff?text=POS+Image+2',
-        'https://via.placeholder.com/800x600/10b981/ffffff?text=POS+Image+3',
-        'https://via.placeholder.com/800x600/10b981/ffffff?text=POS+Image+4',
-        'https://via.placeholder.com/800x600/10b981/ffffff?text=POS+Image+5'
+        'https://github.com/NaphatNonglek/IMG/blob/main/BUDGETBUDDY/Home.png?raw=true',
+        'https://github.com/NaphatNonglek/IMG/blob/main/BUDGETBUDDY/Menu.png?raw=true',
+        'https://github.com/NaphatNonglek/IMG/blob/main/BUDGETBUDDY/Add%20Menu.png?raw=true',
+        'https://github.com/NaphatNonglek/IMG/blob/main/BUDGETBUDDY/Overview.png?raw=true',
+        'https://github.com/NaphatNonglek/IMG/blob/main/BUDGETBUDDY/Order.png?raw=true'
       ]
     }
   };
@@ -223,7 +236,7 @@ export default function Home() {
         .carousel-container {
           position: relative;
           width: 100%;
-          height: 400px;
+          height: 550px;
           background: #f3f4f6;
           border-radius: 12px;
           overflow: hidden;
