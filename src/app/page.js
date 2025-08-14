@@ -23,7 +23,8 @@ export default function Home() {
         'Dark mode feature for comfortable viewing in low-light environments.'
       ],
       technologies: ['Figma'],
-      // แทนที่ URL เหล่านี้ด้วยรูปจริงของคุณ
+      figmaLink:
+        'https://www.figma.com/design/pCChZ79Ch9EbTfdNsGcm0v/Design?node-id=0-1&t=VAw2EORL5T0V6Mtz-1',
       mainImage:
         'https://github.com/NaphatNonglek/IMG/blob/main/Stage%20Web/Main%20page.png?raw=true',
       images: [
@@ -56,6 +57,8 @@ export default function Home() {
         'Dark mode feature for comfortable viewing in low-light environments.'
       ],
       technologies: ['Figma', 'VsCode', 'HTML', 'TailwindCSS'],
+      figmaLink:
+        'https://www.figma.com/design/cPyGfpF9ZkJYBGb6I80h0O/UX-UI-coding-web-project?node-id=0-1&t=9VbpdK7J87xT5jR9-1',
       mainImage:
         'https://github.com/NaphatNonglek/IMG/blob/main/homepage%2011.png?raw=true',
       images: [
@@ -83,6 +86,8 @@ export default function Home() {
         'On the Overview page, there is an Orders section displaying all sold items, and a Best Selling section showing top-selling products ranked from highest to lowest sales.'
       ],
       technologies: ['Figjam', 'Figma', 'GoogleSheet', 'Word'],
+      figmaLink:
+        'https://www.figma.com/design/iWo7hSH0b4egy3UJ6BwTWT/POS-System-Website?node-id=0-1&t=5RH6P1npLEp8lXeO-1',
       mainImage:
         'https://github.com/NaphatNonglek/IMG/blob/main/BUDGETBUDDY/Home.png?raw=true',
       images: [
@@ -813,7 +818,7 @@ export default function Home() {
                 </ul>
               </div>
 
-              <div>
+              <div className="mb-6">
                 <h3 className="text-xl font-bold text-gray-800 mb-3">
                   Technologies Used
                 </h3>
@@ -828,6 +833,23 @@ export default function Home() {
                   ))}
                 </div>
               </div>
+
+              {/* View in Figma Button */}
+              {selectedProject && selectedProject.figmaLink && (
+                <div className="mt-6 pt-6 border-t border-gray-200">
+                  <div className="flex justify-center">
+                    <a
+                      href={selectedProject.figmaLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 flex items-center gap-2 shadow-lg"
+                    >
+                      <i className="fab fa-figma"></i>
+                      View in Figma
+                    </a>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}
