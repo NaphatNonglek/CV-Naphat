@@ -542,7 +542,7 @@ export default function Home() {
                   {/* Resume Button */}
                   <div className="flex justify-center">
                     <a
-                      href="/resume.pdf"
+                      href="/Resume.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-3 rounded-full hover:from-purple-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 flex items-center gap-2 shadow-lg"
