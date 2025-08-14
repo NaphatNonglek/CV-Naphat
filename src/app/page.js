@@ -481,9 +481,13 @@ export default function Home() {
         >
           <div className="container mx-auto text-center">
             <div className="max-w-4xl mx-auto">
-              <div className="float-animation mb-8">
-                <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-400 to-pink-400 flex items-center justify-center">
-                  <span className="text-3xl text-white font-bold">NP</span>
+              <div className="float-animation mb-8 mt-4">
+                <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden shadow-lg">
+                  <img
+                    src="https://github.com/NaphatNonglek/IMG/blob/main/Profile1.jpg?raw=true"
+                    alt="Naphat Nonglek"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
 
@@ -525,10 +529,23 @@ export default function Home() {
                     design and I am actively seeking an internship in this field
                     from November to March.
                   </p>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 mb-6">
                     In the future, I aim to strengthen my coding skills to
                     complement my design work.
                   </p>
+
+                  {/* Resume Button */}
+                  <div className="flex justify-center">
+                    <a
+                      href="/resume.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-3 rounded-full hover:from-purple-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 flex items-center gap-2 shadow-lg"
+                    >
+                      <i className="fas fa-file"></i>
+                      View Resume
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
